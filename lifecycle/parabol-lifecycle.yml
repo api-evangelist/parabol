@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: searched
+source: https://raw.githubusercontent.com/ParabolInc/parabol/master/llms.txt
+versioning:
+  scheme: single-version-additive
+  current: v1 (unversioned GraphQL endpoint)
+  endpoint: https://action.parabol.co/graphql
+  notes: >-
+    Single evolving GraphQL schema. Backward-compatible/additive changes;
+    removals are signalled with field-level @deprecated directives in the SDL.
+deprecation:
+  mechanism: graphql-field-deprecation
+  directive: '@deprecated(reason: ...)'
+  notes: >-
+    Deprecations are marked at the schema/field level via the GraphQL
+    @deprecated directive rather than via HTTP Sunset/Deprecation headers.
+  policy_url: null
+status_page: https://parabol.statuspage.io/
+changelog:
+  releases: https://github.com/ParabolInc/parabol/releases
+  whats_new: https://www.parabol.co/features/whats-new-at-parabol/
+  ref: changelog/parabol-changelog.yml
+sla:
+  url: null
+  notes: No public numeric SLA/uptime target published; status via statuspage.io.
+source_of_truth: https://github.com/ParabolInc/parabol

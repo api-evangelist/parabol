@@ -1,0 +1,57 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: graphql/parabol-schema.graphql
+notes: >-
+  No official hosted/remote Parabol MCP server was found. Parabol's GraphQL API
+  is explicitly designed to be AI-agent-friendly (agent-friendly schema
+  metadata, scoped Personal Access Tokens), which makes it a strong candidate
+  for an MCP wrapper. The tools below are a candidate mapping from marquee
+  GraphQL operations — not a published server.
+server:
+  name: parabol
+  transport: http
+  endpoint: https://action.parabol.co/graphql
+  auth: Bearer Personal Access Token (scoped)
+  url: null
+tools:
+- name: get_viewer
+  description: Read the authenticated user and their teams, meetings, tasks, and pages.
+  source_operation: graphql/parabol-schema.graphql#Query.viewer
+  scope: users:read
+- name: start_retrospective
+  description: Start a new retrospective meeting for a team.
+  source_operation: graphql/parabol-schema.graphql#Mutation.startRetrospective
+  scope: meetings:write
+- name: start_sprint_poker
+  description: Start a new Sprint Poker estimation meeting.
+  source_operation: graphql/parabol-schema.graphql#Mutation.startSprintPoker
+  scope: meetings:write
+- name: start_check_in
+  description: Start a new Check-In meeting.
+  source_operation: graphql/parabol-schema.graphql#Mutation.startCheckIn
+  scope: meetings:write
+- name: start_team_prompt
+  description: Start a new standup (Team Prompt) meeting.
+  source_operation: graphql/parabol-schema.graphql#Mutation.startTeamPrompt
+  scope: meetings:write
+- name: create_reflection
+  description: Add a reflection card during a retrospective.
+  source_operation: graphql/parabol-schema.graphql#Mutation.createReflection
+  scope: meetings:write
+- name: create_task
+  description: Create an actionable task, optionally linked to an integration.
+  source_operation: graphql/parabol-schema.graphql#Mutation.createTask
+  scope: tasks:write
+- name: add_team
+  description: Create a new team.
+  source_operation: graphql/parabol-schema.graphql#Mutation.addTeam
+  scope: teams:write
+- name: add_comment
+  description: Add a comment to a discussion thread.
+  source_operation: graphql/parabol-schema.graphql#Mutation.addComment
+  scope: comments:write
+- name: create_page
+  description: Create a new collaborative page (document).
+  source_operation: graphql/parabol-schema.graphql#Mutation.createPage
+  scope: pages:write

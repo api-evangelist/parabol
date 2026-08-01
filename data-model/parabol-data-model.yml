@@ -1,0 +1,83 @@
+generated: '2026-07-20'
+method: derived
+source: graphql/parabol-schema.graphql
+docs: https://raw.githubusercontent.com/ParabolInc/parabol/master/llms.txt
+root_query: viewer
+entities:
+- name: Organization
+  description: Top-level billing and membership container.
+- name: Team
+  description: A group of users within an organization; owns meetings and tasks.
+- name: User
+  description: A person; the authenticated user is reached via the `viewer` root field.
+- name: Meeting
+  description: A session of one of four types (Retrospective, Check-In, Sprint Poker, Team Prompt).
+- name: Task
+  description: An actionable item, optionally linked to an external integration.
+- name: Reflection
+  description: A card added by a participant during the reflect phase of a retrospective.
+- name: AgendaItem
+  description: A discussion topic added to a Check-In meeting.
+- name: Page
+  description: A rich-text collaborative document scoped to a team or personal workspace.
+- name: Template
+  description: A reusable meeting structure (reflect or poker).
+- name: Comment
+  description: A comment added to a discussion.
+relationships:
+- from: Organization
+  to: Team
+  type: has_many
+  via: teams
+- from: Team
+  to: Organization
+  type: belongs_to
+  via: orgId
+- from: Organization
+  to: User
+  type: has_many
+  via: organizationUsers
+- from: Team
+  to: User
+  type: has_many
+  via: teamMembers
+- from: Team
+  to: Meeting
+  type: has_many
+  via: meetings
+- from: Meeting
+  to: Team
+  type: belongs_to
+  via: teamId
+- from: Team
+  to: Task
+  type: has_many
+  via: tasks
+- from: Task
+  to: Team
+  type: belongs_to
+  via: teamId
+- from: Meeting
+  to: Reflection
+  type: has_many
+  via: reflections
+- from: Meeting
+  to: AgendaItem
+  type: has_many
+  via: agendaItems
+- from: Team
+  to: Template
+  type: has_many
+  via: meetingTemplates
+- from: Page
+  to: Team
+  type: belongs_to
+  via: teamId
+- from: Comment
+  to: Meeting
+  type: belongs_to
+  via: meetingId
+- from: Task
+  to: User
+  type: belongs_to
+  via: userId

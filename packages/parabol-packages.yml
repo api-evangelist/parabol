@@ -1,0 +1,43 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/ParabolInc
+notes: >-
+  Parabol does not publish a distributable client SDK on a package registry
+  (no npm/PyPI/Maven/etc. first-party client library found). The GraphQL API is
+  consumed directly via any GraphQL client. Parabol does publish first-party
+  example/reference clients and integration tooling on GitHub (source only),
+  listed below. `official: true` marks first-party ParabolInc code; none are
+  installable registry packages, so no `SDKs` pointer is emitted.
+packages:
+- language: python
+  registry: github
+  name: ParabolInc/standup-aggregator-example
+  url: https://github.com/ParabolInc/standup-aggregator-example
+  install: git clone https://github.com/ParabolInc/standup-aggregator-example
+  official: true
+  kind: example-client
+  description: Python client example showing how to call the Parabol API to export standup data.
+- language: typescript
+  registry: github
+  name: ParabolInc/retro-reflect-bot
+  url: https://github.com/ParabolInc/retro-reflect-bot
+  install: git clone https://github.com/ParabolInc/retro-reflect-bot
+  official: true
+  kind: reference-bot
+  description: Reference bot that populates retro reflections with automated observations from Slack/GitHub activity.
+- language: typescript
+  registry: github
+  name: ParabolInc/nest-graphql-endpoint
+  url: https://github.com/ParabolInc/nest-graphql-endpoint
+  install: npm install nest-graphql-endpoint
+  official: true
+  kind: library
+  description: Utility to nest an external GraphQL endpoint inside your schema (used internally by Parabol).
+- language: go
+  registry: github
+  name: ParabolInc/parabol-mattermost-plugin
+  url: https://github.com/ParabolInc/parabol-mattermost-plugin
+  install: git clone https://github.com/ParabolInc/parabol-mattermost-plugin
+  official: true
+  kind: integration-plugin
+  description: Mattermost plugin integrating Parabol meetings into Mattermost.

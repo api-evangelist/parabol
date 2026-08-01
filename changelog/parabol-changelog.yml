@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/ParabolInc/parabol/releases
+scheme: github-releases + product "What's New"
+current_version: rolling (continuous deployment)
+channels:
+  github_releases: https://github.com/ParabolInc/parabol/releases
+  whats_new: https://www.parabol.co/features/whats-new-at-parabol/
+notes: >-
+  Parabol ships continuously; the dated source of truth is GitHub Releases on
+  ParabolInc/parabol, with a curated product "What's New" page for user-facing
+  highlights. Recent highlights captured below from published announcements.
+entries:
+- date: '2026'
+  highlights:
+  - Introduced the public GraphQL API with scoped Personal Access Tokens and an
+    AI-agent-friendly schema.
+  breaking: false
+- date: '2026'
+  highlights:
+  - Pages — real-time collaborative documents (Yjs-powered, self-hosted
+    Confluence alternative).
+  - Custom AI prompts over meeting data to generate insights/summaries (beta).
+  breaking: false

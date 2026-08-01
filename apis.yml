@@ -1,8 +1,33 @@
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 19
+  pass: local-v1
 aid: parabol
 name: Parabol
-description: 'Parabol is a company surfaced as a portfolio company of crv, techstars and added to the
-  API Evangelist network as a stub for enrichment. Sector: developer-tools. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  Parabol is an open-source collaborative workspace that helps teams run more
+  effective, inclusive, and engaging meetings — retrospectives, sprint poker
+  estimation, check-ins/standups, and collaborative Pages documents — all in
+  real time. Parabol exposes a public GraphQL API at action.parabol.co/graphql
+  authenticated with scoped Personal Access Tokens (Bearer), letting developers
+  and AI agents start meetings, create reflections and tasks, read team and
+  organization data, and subscribe to live meeting events. The platform is
+  dual-licensed AGPLv3, self-hostable for air-gapped deployments, and integrates
+  with Jira, GitHub, GitLab, Linear, Azure DevOps, Slack, and Mattermost.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://action-files.parabol.co/production/build/favicon.ico
 url: https://raw.githubusercontent.com/api-evangelist/parabol/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -13,16 +38,110 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Developer Tools
-apis: []
+- Agile
+- Retrospectives
+- Meetings
+- Collaboration
+- GraphQL
+- Team Productivity
+- Open Source
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- name: Parabol GraphQL API
+  description: >-
+    Public GraphQL API for Parabol. Authenticated with scoped Personal Access
+    Tokens passed as a Bearer token. A single root `viewer` query returns the
+    authenticated user and their teams, meetings, tasks, and pages; mutations
+    start and drive meetings, create reflections/tasks/pages/comments; and five
+    subscriptions stream live meeting, team, organization, task, and
+    notification events.
+  humanURL: https://www.parabol.co/friday-ship/introducing-the-parabol-api/
+  baseURL: https://action.parabol.co/graphql
+  properties:
+  - type: GraphQL
+    url: graphql/parabol-schema.graphql
+  - type: Authentication
+    url: authentication/parabol-authentication.yml
+  - type: OAuthScopes
+    url: scopes/parabol-scopes.yml
+  - type: ErrorCatalog
+    url: errors/parabol-problem-types.yml
+  - type: Conventions
+    url: conventions/parabol-conventions.yml
+  - type: DataModel
+    url: data-model/parabol-data-model.yml
+  - type: AsyncAPI
+    url: asyncapi/parabol-graphql-subscriptions-asyncapi.yml
+  - type: MCPServer
+    url: mcp/parabol-mcp.yml
 common:
 - type: Website
   url: https://www.parabol.co/
+- type: APIReference
+  url: https://action.parabol.co/graphql
+- type: Documentation
+  url: https://www.parabol.co/friday-ship/introducing-the-parabol-api/
+- type: GettingStarted
+  url: https://www.parabol.co/friday-ship/introducing-the-parabol-api/
+- type: Blog
+  url: https://www.parabol.co/blog/
+- type: GitHubOrganization
+  url: https://github.com/ParabolInc
+- type: Pricing
+  url: https://www.parabol.co/pricing/
+- type: SignUp
+  url: https://action.parabol.co/
+- type: TermsOfService
+  url: https://www.parabol.co/terms-of-service/
+- type: PrivacyPolicy
+  url: https://www.parabol.co/privacy/
+- type: Support
+  url: https://www.parabol.co/contact/
+- type: StatusPage
+  url: https://parabol.statuspage.io/
+- type: ChangeLog
+  url: https://github.com/ParabolInc/parabol/releases
+- type: Authentication
+  url: authentication/parabol-authentication.yml
+- type: OAuthScopes
+  url: scopes/parabol-scopes.yml
+- type: Conventions
+  url: conventions/parabol-conventions.yml
+- type: ErrorCatalog
+  url: errors/parabol-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/parabol-lifecycle.yml
+- type: Conformance
+  url: conformance/parabol-conformance.yml
+- type: Compliance
+  url: https://www.parabol.co/security-faq/
+- type: TrustCenter
+  url: security/parabol-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/parabol-vulnerability-disclosure.yml
+- type: Security
+  url: https://www.parabol.co/security-faq/
+- type: DomainSecurity
+  url: security/parabol-domain-security.yml
+- type: Webhooks
+  url: asyncapi/parabol-graphql-subscriptions-asyncapi.yml
+- type: LLMsTxt
+  url: llms/parabol-llms.txt
+- type: Packages
+  url: packages/parabol-packages.yml
+- type: MCPServer
+  url: mcp/parabol-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DataModel
+  url: data-model/parabol-data-model.yml
+- type: ChangeLog
+  url: changelog/parabol-changelog.yml

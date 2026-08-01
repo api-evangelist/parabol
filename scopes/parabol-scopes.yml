@@ -1,0 +1,64 @@
+generated: '2026-07-20'
+method: searched
+source: graphql/parabol-schema.graphql
+docs: https://raw.githubusercontent.com/ParabolInc/parabol/master/llms.txt
+model: >-
+  Parabol Personal Access Tokens are scoped. Scopes are enforced in the GraphQL
+  schema via a `@scope(name: OAuthScopeEnum!)` directive on protected fields and
+  mutations. The enum below is the complete OAuthScopeEnum from the public
+  schema SDL; descriptions are from the published llms.txt scope table. These
+  are PAT scopes (not OAuth2 flow scopes) — Parabol has no OAuth2 flows yet.
+schemes:
+- name: PersonalAccessToken
+  type: pat-scoped
+  source: graphql/parabol-schema.graphql
+  directive: '@scope(name: OAuthScopeEnum!)'
+scopes:
+- scope: users:read
+  enum: USERS_READ
+  description: Read user data
+- scope: users:write
+  enum: USERS_WRITE
+  description: Update user data
+- scope: teams:read
+  enum: TEAMS_READ
+  description: Read team data
+- scope: teams:write
+  enum: TEAMS_WRITE
+  description: Create and update teams
+- scope: orgs:read
+  enum: ORGS_READ
+  description: Read organization data
+- scope: orgs:write
+  enum: ORGS_WRITE
+  description: Update organization data
+- scope: meetings:read
+  enum: MEETINGS_READ
+  description: Read meeting data
+- scope: meetings:write
+  enum: MEETINGS_WRITE
+  description: Create and update meetings
+- scope: tasks:read
+  enum: TASKS_READ
+  description: Read task data
+- scope: tasks:write
+  enum: TASKS_WRITE
+  description: Create and update tasks
+- scope: templates:read
+  enum: TEMPLATES_READ
+  description: Read meeting template data
+- scope: templates:write
+  enum: TEMPLATES_WRITE
+  description: Create and update meeting templates
+- scope: pages:read
+  enum: PAGES_READ
+  description: Read page (document) data
+- scope: pages:write
+  enum: PAGES_WRITE
+  description: Create and update pages
+- scope: comments:read
+  enum: COMMENTS_READ
+  description: Read comment data
+- scope: comments:write
+  enum: COMMENTS_WRITE
+  description: Create and update comments

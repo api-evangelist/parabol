@@ -1,0 +1,30 @@
+generated: '2026-07-20'
+method: searched
+source: https://raw.githubusercontent.com/ParabolInc/parabol/master/llms.txt
+docs: https://www.parabol.co/friday-ship/introducing-the-parabol-api/
+summary:
+  types: [http-bearer, personal-access-token]
+  api_key_in: [header]
+  token_scoped: true
+  oauth2_flows: []
+  notes: >-
+    Parabol's public GraphQL API authenticates with scoped Personal Access
+    Tokens (PATs) passed as an HTTP Bearer token in the Authorization header.
+    Tokens are least-privilege: an integration requests only the scopes it
+    needs, enforced in the schema by a @scope(name: OAuthScopeEnum!) directive
+    (252 field applications). Regular first-party sessions use a JWT for which
+    the @scope directive is a no-op. Full OAuth 2.0 authorization-code support
+    is on the published roadmap but not yet available.
+schemes:
+- name: PersonalAccessToken
+  type: http
+  scheme: bearer
+  bearerFormat: PAT
+  in: header
+  header: Authorization
+  create_url: https://action.parabol.co/me/profile
+  scoped: true
+  scopes_ref: scopes/parabol-scopes.yml
+  sources: [graphql/parabol-schema.graphql]
+roadmap:
+- oauth2 authorization-code (planned, per API launch announcement)

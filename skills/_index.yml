@@ -1,0 +1,12 @@
+generated: '2026-07-20'
+method: generated
+source: graphql/parabol-schema.graphql
+skills:
+- file: parabol-run-retrospective.md
+  name: Run a Parabol retrospective end to end
+  api: graphql/parabol-schema.graphql
+  operations: [startRetrospective, createReflection, navigateMeeting, endRetrospective]
+- file: parabol-create-tasks-from-retro.md
+  name: Create and comment on tasks from meeting outcomes
+  api: graphql/parabol-schema.graphql
+  operations: [createTask, addComment]

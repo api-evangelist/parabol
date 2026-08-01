@@ -1,0 +1,53 @@
+generated: '2026-07-20'
+method: derived
+source: graphql/parabol-schema.graphql
+docs: https://raw.githubusercontent.com/ParabolInc/parabol/master/llms.txt
+transport:
+  protocol: GraphQL
+  endpoint: https://action.parabol.co/graphql
+  schema_sdl: https://action.parabol.co/graphql/schema.graphql
+  methods: [POST]
+  subscriptions: graphql-ws (WebSocket)
+authentication:
+  style: bearer-pat
+  header: 'Authorization: Bearer <token>'
+  scoped: true
+  ref: authentication/parabol-authentication.yml
+pagination:
+  style: relay-cursor-connections
+  pattern: >-
+    List fields use the Relay Connections spec — `first`/`after` (and
+    `last`/`before`) arguments returning `edges { node cursor }` plus
+    `pageInfo { hasNextPage endCursor }`.
+  params: [first, after, last, before]
+  response_fields: [edges, node, cursor, pageInfo, hasNextPage, endCursor]
+idempotency:
+  supported: false
+  notes: >-
+    No documented idempotency-key mechanism. Mutations are not advertised as
+    idempotent; agents should not assume safe automatic retries of write
+    mutations.
+error_envelope:
+  graphql_errors: >-
+    Transport/validation failures return the standard GraphQL top-level
+    `errors[]` array (message, locations, path).
+  mutation_errors: >-
+    Business-rule failures surface in-band via a StandardMutationError object
+    ({ title, message }) embedded on most mutation payload types, rather than as
+    top-level GraphQL errors.
+  ref: errors/parabol-problem-types.yml
+versioning:
+  scheme: single-version-additive
+  notes: >-
+    A single evolving GraphQL schema; changes are additive with field-level
+    @deprecated markers rather than URL/date versioning.
+  ref: lifecycle/parabol-lifecycle.yml
+rate_limiting:
+  model: tier-based
+  notes: >-
+    Paid accounts receive higher request rate limits than free accounts; exact
+    numeric limits and response headers are not publicly documented.
+metadata:
+  agent_friendly: >-
+    The schema is annotated with AI-agent-friendly descriptions so agents can
+    introspect capabilities without heavy documentation-reading.

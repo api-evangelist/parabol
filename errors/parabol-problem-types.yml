@@ -1,0 +1,35 @@
+generated: '2026-07-20'
+method: derived
+source: graphql/parabol-schema.graphql
+format: graphql
+model: >-
+  Parabol is a GraphQL API, so it does not use RFC 9457 problem+json HTTP error
+  bodies. Errors arrive on two channels: (1) the standard GraphQL top-level
+  `errors[]` array for transport, auth, validation, and scope failures; and
+  (2) an in-band StandardMutationError object embedded on most mutation payload
+  types for business-rule failures, so a mutation can return partial data
+  alongside a structured error.
+envelopes:
+- name: GraphQLError
+  channel: top-level errors[]
+  fields: [message, locations, path, extensions]
+  used_for:
+  - malformed or invalid query (validation)
+  - authentication failure (missing/invalid Personal Access Token)
+  - authorization/scope failure (@scope directive not satisfied)
+  - internal/server error
+- name: StandardMutationError
+  channel: in-band on mutation payload
+  fields:
+  - name: title
+    type: String
+    description: The title of the error
+  - name: message
+    type: String!
+    description: The full error message
+  used_for:
+  - business-rule and domain validation failures on write mutations
+  note: >-
+    Nearly every *Payload mutation return type carries an optional `error:
+    StandardMutationError` field; a non-null error indicates the mutation did
+    not fully succeed.

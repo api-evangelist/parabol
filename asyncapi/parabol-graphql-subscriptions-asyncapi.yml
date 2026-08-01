@@ -1,0 +1,107 @@
+generated: '2026-07-20'
+method: derived
+source: graphql/parabol-schema.graphql
+spec_type: AsyncAPI
+x-note: >-
+  Derived from the Parabol GraphQL Subscription root type. Parabol's real-time
+  event surface is delivered as GraphQL subscriptions over the graphql-ws
+  WebSocket protocol at wss://action.parabol.co/graphql (not classic HTTP
+  webhooks). This AsyncAPI faithfully catalogs the five real subscription
+  channels present in the public schema; message payload shapes are the
+  corresponding *SubscriptionPayload GraphQL types.
+asyncapi: 3.0.0
+info:
+  title: Parabol GraphQL Subscriptions
+  version: '1.0.0'
+  description: >-
+    Real-time event streams exposed by the Parabol GraphQL API via the
+    Subscription root type, delivered over the graphql-ws WebSocket protocol.
+    Requires a scoped Personal Access Token.
+servers:
+  production:
+    host: action.parabol.co
+    pathname: /graphql
+    protocol: wss
+    protocolVersion: graphql-ws
+    description: Parabol production GraphQL WebSocket endpoint.
+    security:
+      - $ref: '#/components/securitySchemes/personalAccessToken'
+channels:
+  meetingSubscription:
+    address: meetingSubscription
+    description: All events within a specific meeting (reflections, votes, stage changes, etc.).
+    parameters:
+      meetingId:
+        description: The ID of the meeting to subscribe to.
+    messages:
+      payload:
+        $ref: '#/components/messages/MeetingSubscriptionPayload'
+  notificationSubscription:
+    address: notificationSubscription
+    description: Notifications delivered to the authenticated viewer.
+    messages:
+      payload:
+        $ref: '#/components/messages/NotificationSubscriptionPayload'
+  organizationSubscription:
+    address: organizationSubscription
+    description: Organization-level change events for the viewer's organizations.
+    messages:
+      payload:
+        $ref: '#/components/messages/OrganizationSubscriptionPayload'
+  taskSubscription:
+    address: taskSubscription
+    description: Task create/update/delete events for the viewer.
+    messages:
+      payload:
+        $ref: '#/components/messages/TaskSubscriptionPayload'
+  teamSubscription:
+    address: teamSubscription
+    description: Team-level change events for the viewer's teams.
+    messages:
+      payload:
+        $ref: '#/components/messages/TeamSubscriptionPayload'
+operations:
+  receiveMeetingEvents:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingSubscription'
+  receiveNotifications:
+    action: receive
+    channel:
+      $ref: '#/channels/notificationSubscription'
+  receiveOrganizationEvents:
+    action: receive
+    channel:
+      $ref: '#/channels/organizationSubscription'
+  receiveTaskEvents:
+    action: receive
+    channel:
+      $ref: '#/channels/taskSubscription'
+  receiveTeamEvents:
+    action: receive
+    channel:
+      $ref: '#/channels/teamSubscription'
+components:
+  securitySchemes:
+    personalAccessToken:
+      type: http
+      scheme: bearer
+      bearerFormat: PAT
+      description: Scoped Personal Access Token passed as a Bearer token.
+  messages:
+    MeetingSubscriptionPayload:
+      name: MeetingSubscriptionPayload
+      title: Meeting subscription payload
+      summary: Union of meeting-related mutation payloads emitted during a meeting.
+    NotificationSubscriptionPayload:
+      name: NotificationSubscriptionPayload
+      title: Notification subscription payload
+    OrganizationSubscriptionPayload:
+      name: OrganizationSubscriptionPayload
+      title: Organization subscription payload
+    TaskSubscriptionPayload:
+      name: TaskSubscriptionPayload
+      title: Task subscription payload
+    TeamSubscriptionPayload:
+      name: TeamSubscriptionPayload
+      title: Team subscription payload
