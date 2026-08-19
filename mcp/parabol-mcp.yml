@@ -2,12 +2,10 @@ generated: '2026-07-20'
 method: derived
 status: candidate
 source: graphql/parabol-schema.graphql
-notes: >-
-  No official hosted/remote Parabol MCP server was found. Parabol's GraphQL API
-  is explicitly designed to be AI-agent-friendly (agent-friendly schema
-  metadata, scoped Personal Access Tokens), which makes it a strong candidate
-  for an MCP wrapper. The tools below are a candidate mapping from marquee
-  GraphQL operations — not a published server.
+notes: No official hosted/remote Parabol MCP server was found. Parabol's GraphQL API is explicitly designed
+  to be AI-agent-friendly (agent-friendly schema metadata, scoped Personal Access Tokens), which makes
+  it a strong candidate for an MCP wrapper. The tools below are a candidate mapping from marquee GraphQL
+  operations — not a published server.
 server:
   name: parabol
   transport: http
@@ -55,3 +53,9 @@ tools:
   description: Create a new collaborative page (document).
   source_operation: graphql/parabol-schema.graphql#Mutation.createPage
   scope: pages:write
+deployment:
+  mode: none
+  verified: derived
+  tools: 10
+  checked: '2026-08-12'
+  source: catalog MCP census
