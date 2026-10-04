@@ -61,7 +61,8 @@ tags:
 - Collaboration
 - GraphQL
 - Team Productivity
-- Open-Source
+- Open Source
+- Real-Time
 tags_raw:
 - Company
 - Developer Tools
@@ -72,6 +73,8 @@ tags_raw:
 - GraphQL
 - Team Productivity
 - Open Source
+- Open-Source
+- Real-Time
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
