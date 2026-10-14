@@ -2,6 +2,7 @@ generated: '2026-10-14'
 method: searched
 checked:
 - https://github.com/marketplace?type=apps
+- okta/integrations/okta-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: GitHub Marketplace (apps)
@@ -21,5 +22,30 @@ edges:
   - Verified domain
   detected_by: sweep-devtools.py
   detected: '2026-10-14'
+- partner_name: Okta (own)
+  partner: okta
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.okta.com/integrations/parabol/
+  mirror_of: okta/integrations/okta-integration-edges.yml
+  apps:
+  - Parabol
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Lifecycle Management
+  badges:
+  - OKTA_VERIFIED
+  features:
+  - CREATE
+  - DEACTIVATE
+  - GROUP_PUSH
+  - SAML
+  - UPDATE
 source:
 - https://github.com/marketplace?type=apps
