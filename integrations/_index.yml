@@ -28,3 +28,29 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: parabol-slack-own
+  label: Slack (own)
+  partner: slack
+  partner_name: Slack (own)
+  category: Slack app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://slack.com/marketplace/A4ZM70S93-parabol
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: parabol-zoom-own
+  label: Zoom (own)
+  partner: zoom
+  partner_name: Zoom (own)
+  category: Zoom app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.zoom.us/apps/emwK9FSaTRuDnTKBX59T9g
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
