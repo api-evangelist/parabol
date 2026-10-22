@@ -12,6 +12,7 @@ checked:
 - https://skillsmp.com/sitemap.xml
 - https://www.skills.sh/sitemap.xml
 - atlassian/integrations/atlassian-integration-edges.yml
+- raycast/integrations/raycast-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: GitHub Marketplace (apps)
@@ -137,5 +138,22 @@ edges:
   detected: '2026-10-21'
   detected_by: mirror-platform-listings.py
   category: Workflow
+- partner_name: Raycast (raycast-store)
+  partner: raycast
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: raycast-store
+  evidence: https://www.raycast.com/parabol/parabol
+  mirror_of: raycast/integrations/raycast-integration-edges.yml
+  apps:
+  - Parabol
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: Raycast Store extension (first-party)
 source:
 - https://github.com/marketplace?type=apps
